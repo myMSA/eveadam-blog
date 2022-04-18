@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eveadam.blog.mapper.article.ArticleMapper">
+
+	<!-- 선택한 board의 article 갯수 -->
+	<select id="getArticleCount" resultType="long">
+		select count(*) as cnt
+		from article
+		where board_subject = #{board_subject}
+	</select>
+
+	<!-- 선택한 board의 article list 읽기 -->
+	<select id="getArticleListPage" resultType="ArticleDTO">
+		select
+		B.*
+		from (select rownum as rnum, A.*
+		from( select article_id, board_subject, title, name, regdate, readcount
+		from article
+		where board_subject = #{board_subject}
+		order by article_id desc) A ) B
+		where rnum between #{startNum} and #{endNum}
+	</select>
+
+	<!-- article 조회수 올리기 -->
+	<update id="updateReadcount" parameterType="long">
+		update article set
+		readcount = readcount + 1 where article_id = #{article_id}
+	</update>
+
+	<!-- article detail 가져오기 -->
+	<select id="getDetail" parameterType="long"
+		resultType="ArticleDTO">
+
+		SELECT article_id, board_subject, title,name,content,
+		regdate, readcount
+		FROM article
+		WHERE article_id = #{article_id}
+
+	</select>
+
+	<!-- insert Article -->
+	<insert id="insertArticle" parameterType="ArticleDTO">
+		insert into
+		article(article_id,board_subject,title,name,content,password)
+		values(article_id_seq.nextval,#{board_subject},#{title},#{name},#{content},#{password})
+	</insert>
+
+	<!-- delete Article -->
+	<delete id="deleteArticle" parameterType="ArticleDTO">
+		delete article
+		where
+		article_id=#{article_id} and password=#{password}
+	</delete>
+	
+	<!-- sub delete :  delete Article along with transaction of deleting board -->
+	<delete id="deleteArticle_transaction" parameterType="ArticleDTO">
+		delete article
+		where board_subject = #{board_subject}
+	</delete>
+	
+	<!-- update Article -->
+	<update id="updateArticle" parameterType="ArticleDTO">
+		update article
+		set title = #{title} , content = #{content}, board_subject=#{board_subject}
+		where article_id=#{article_id}
+	</update>
+</mapper>

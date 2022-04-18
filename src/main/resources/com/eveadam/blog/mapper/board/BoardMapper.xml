@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eveadam.blog.mapper.board.BoardMapper">
+
+	<select id="getBoardList" resultType="BoardDTO">
+		select
+		board_subject
+		from board
+		order by regdate desc
+	</select>
+
+	<insert id="insertBoard" parameterType="BoardDTO">
+		insert into
+		board(board_subject,password)
+		values(#{board_subject},#{password})
+	</insert>
+
+	<delete id="deleteBoard" parameterType="BoardDTO">
+		delete board
+		where board_subject=#{board_subject} and password=#{password}
+	</delete>
+</mapper>
