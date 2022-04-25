@@ -127,7 +127,7 @@ a:visited {
 
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-				<c:if test="${user != null}">
+				<c:if test="${member != null}">
 					<a href="./articleinsert">Insert Article</a>
 				</c:if>
 				</div>

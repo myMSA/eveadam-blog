@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import com.eveadam.blog.dto.ArticleDTO;
 
 public interface ArticleMapper {
-	//
+	// article list
 	long getArticleCount(@Param("board_subject") String board_subject) throws SQLException;
 
 	List<ArticleDTO> getArticleListPage(@Param("board_subject") String board_subject, @Param("startNum") long startNum, @Param("endNum") long endNum) throws SQLException;
@@ -26,6 +26,9 @@ public interface ArticleMapper {
 	
 	// article delete along with transaction of deleting board
 	void deleteArticle_transaction(ArticleDTO articleDTO) throws SQLException;
+
+	// reply of article delete along with transaction of deleting board
+	void delete_reply_Article_transaction(ArticleDTO articleDTO) throws SQLException;
 
 	// article Update
 	int updateArticle(ArticleDTO articleDTO) throws SQLException;

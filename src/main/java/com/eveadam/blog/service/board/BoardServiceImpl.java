@@ -35,6 +35,12 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public ArrayList<BoardDTO> getBoardList() throws Exception {
+		try {
+			return boardMapper.getBoardList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		return boardMapper.getBoardList();
 	}
 
@@ -43,17 +49,22 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.insertBoard(boardDTO);
 	}
 
-	// board 삭제 시, 하위 글 동시 삭제를 위한 트랜잭션
-	// 외래키 의존성을 고려하여 자식부터 삭제
+
 	@Override
 	@Transactional
 	public void deleteBoard(BoardDTO boardDTO) throws Exception {
 		try {
-			//외래키 의존성을 고려해서 자식인 article부터 삭제
+			//외래키 의존성을 고려해서 
+			// board 삭제를 위해선 자식인 article 먼저 삭제
+			// article 삭제를 위해선 자식인 article 먼저 삭제
+			
 			ArticleDTO articleDTO = new ArticleDTO();
 			articleDTO.setBoard_subject(boardDTO.getBoard_subject());
-			log.info("check input of deleteboard on Boardservice "+articleDTO);
 			
+			log.info("delete replies of article of board");
+			articleMapper.delete_reply_Article_transaction(articleDTO);
+
+			log.info("delete articles of board");
 			articleMapper.deleteArticle_transaction(articleDTO);
 
 			// board 삭제

@@ -29,7 +29,7 @@
 	
 	<!-- 명시적 조건이 우선되는 것을 이용하여 list의 경우 menu를 추가  -->
 	<!-- sidebar link ; https://myhappyman.tistory.com/81 -->
-	<definition name="article.list" template="/WEB-INF/views/template/base3.jsp">
+	<definition name="article.articlelist" template="/WEB-INF/views/template/base3.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
 		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
 		<put-attribute name="body" value="/WEB-INF/views/article/articlelist.jsp" />

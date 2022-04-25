@@ -5,32 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.log4j.Log4j;
 import com.eveadam.blog.dto.ArticleDTO;
 import com.eveadam.blog.dto.BoardDTO;
+import com.eveadam.blog.dto.ReplyDTO;
 import com.eveadam.blog.mapper.article.ArticleMapper;
+import com.eveadam.blog.mapper.reply.ReplyMapper;
 
 @Log4j
 @Service
 public class ArticleServiceImpl implements ArticleService {
 
+	@Autowired
+	private ReplyMapper replyMapper;
+	
+	@Autowired
 	private ArticleMapper articleMapper;
 
-//	@Override
-//	public List<BoardsDTO> getBoardList() {
-//		// TODO Auto-generated method stub
-//		return ArticleMapper.getBoardsListPage();
-//	}
-	
 	@Value("${pageSize}")
 	private int pageSize;
 
-
-	public ArticleServiceImpl(ArticleMapper articleMapper) {
-		this.articleMapper = articleMapper;
-	}
-	
 	@Override
 	public long getArticleCount(String board_subject) throws Exception {
 		return articleMapper.getArticleCount(board_subject);
@@ -65,10 +61,22 @@ public class ArticleServiceImpl implements ArticleService {
 	
 	// delete article
 	@Override
+	@Transactional
 	public void deleteArticle(ArticleDTO articleDTO) throws Exception {
-		if(articleMapper.deleteArticle(articleDTO) == 0) {
-			throw new RuntimeException(
-				"해당하는 게시물이 없거나 비밀번호가 틀립니다.");
+		
+		try {
+			//외래키 의존성을 고려해서 자식인 reply부터 삭제
+			ReplyDTO replyDTO = new ReplyDTO();
+			replyDTO.setArticle_id(articleDTO.getArticle_id());
+			
+			replyMapper.deleteReply_transaction(replyDTO);
+
+			// article 삭제
+			articleMapper.deleteArticle(articleDTO);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw e;
 		}
 	}
 

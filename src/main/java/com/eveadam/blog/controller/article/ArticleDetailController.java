@@ -1,8 +1,9 @@
 package com.eveadam.blog.controller.article;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,25 +11,26 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.eveadam.blog.dto.ArticleDTO;
-import com.eveadam.blog.dto.BoardDTO;
+import com.eveadam.blog.dto.ReplyDTO;
 import com.eveadam.blog.service.article.ArticleService;
+import com.eveadam.blog.service.reply.ReplyService;
 
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Controller
 @RequestMapping("board/{board_subject}/{pg}/{article_id}")
 public class ArticleDetailController {
-
-	private ArticleService articleService;
 	
-	public ArticleDetailController(ArticleService articleService) {
-		this.articleService = articleService;
-	}
+	@Autowired
+	private ReplyService replyService;
+	
+	@Autowired
+	private ArticleService articleService;
 
 	@GetMapping(value = "/")
 	public String detail(
@@ -37,7 +39,17 @@ public class ArticleDetailController {
 			Model model) {
 		
 		try {
+			log.info(pg);
+			log.info(article_id);
+			// reply related
+			List<ReplyDTO> replylist = replyService.getReplyList(article_id);
+			log.info(replylist);
+			
+			// article selected
 			ArticleDTO articleDTO = articleService.getDetail(article_id);
+			
+			// delivering replylist of article and detail of article
+			model.addAttribute("replylist", replylist);
 			model.addAttribute("articleDTO", articleDTO);
 			
 			return "article.articledetail";

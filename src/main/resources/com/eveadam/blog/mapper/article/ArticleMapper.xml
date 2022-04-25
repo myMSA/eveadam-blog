@@ -59,6 +59,13 @@
 		where board_subject = #{board_subject}
 	</delete>
 	
+	<!-- sub1.1 delete :  delete replies of Article along with transaction of deleting board -->
+	<delete id="delete_reply_Article_transaction" parameterType="ArticleDTO">
+		delete from
+		(select a.*, b.* from article a inner join reply b on (a.article_id=b.article_id))
+		where board_subject=#{board_subject}
+	</delete>
+	
 	<!-- update Article -->
 	<update id="updateArticle" parameterType="ArticleDTO">
 		update article

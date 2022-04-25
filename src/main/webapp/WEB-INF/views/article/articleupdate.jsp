@@ -38,19 +38,19 @@ input {
 
 <script type="text/javascript">
 		// sending member info by ajax
-		$(document).ready(function() {
-			$.ajax({
-				url : "${app}/board/current_boardlist",
-				method : "GET",
-				success : function(data) {
-					for(var i =0; i<data.length;i++){
-						console.log(data[i].board_subject);
-						$("#selectBox").append("<option>"+data[i].board_subject+"</option>");
-					}
+	$(document).ready(function() {
+		$.ajax({
+			url : "${app}/board/current_boardlist",
+			method : "GET",
+			success : function(data) {
+				for(var i =0; i<data.length;i++){
+					console.log(data[i].board_subject);
+					$("#selectBox").append("<option>"+data[i].board_subject+"</option>");
 				}
-			})
-		});
-	</script>
+			}
+		})
+	});
+</script>
 
 </head>
 <body>
@@ -74,10 +74,9 @@ input {
 				</tr>
 				<tr>
 					<th>board_subject</th>
-					<td>
-					<select id="selectBox" name="board_subject" required="required">
-					</select>
-					</td>
+					<td><select id="selectBox" name="board_subject"
+						required="required">
+					</select></td>
 				</tr>
 
 				<tr>

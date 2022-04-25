@@ -88,15 +88,15 @@ html, body {
 		<div class="logo">
 			<button class="buttonHeader" onclick="location.href='${app}/';">Tomorrow</button>
 
-			<!-- id is for inserting value of user.nickname, not css -->
+			<!-- id is for inserting value of member.nickname, not css -->
 			<div id="logininfo" class="logininfo">
 
 				<c:choose>
-					<c:when test="${user == null}">
+					<c:when test="${member == null}">
 						<button class="buttonHeader" id="popup_open_btn_homeloginmodal">Login</button>
 					</c:when>
 					<c:otherwise>
-						${ user.nickname } | 
+						${ member.nickname } | 
 						<button class="buttonHeader" onclick="location.href='${app}/sessionInval'">Logout</button>
 					</c:otherwise>
 				</c:choose>

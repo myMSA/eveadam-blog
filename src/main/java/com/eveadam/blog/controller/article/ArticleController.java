@@ -3,6 +3,7 @@ package com.eveadam.blog.controller.article;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,9 +27,11 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping(value ={"board/{board_subject}/{pg}"})
 public class ArticleController {
 	// for boardlist at menu
+	@Autowired
 	private BoardService boardService;
 	
 	// for article list at body
+	@Autowired
 	private ArticleService articleService;
 	
 	@Value("${pageSize}")
@@ -37,14 +40,15 @@ public class ArticleController {
 	@Value("${blockSize}")
 	private long blockSize;
 	
-	// this controller use 2 service ; boardService, articleService
-	public ArticleController(BoardService boardService, ArticleService articleService) {
-		this.boardService = boardService;
-		this.articleService = articleService;
-	}
-
 	@GetMapping("articleinsert")
-	public String insertArticle() {
+	public String insertArticle(
+			@PathVariable String board_subject,
+			Model model
+			) {
+		log.info("parameter of insertArticle of ArticleController"+board_subject);
+		
+		model.addAttribute("board_subject",board_subject);
+		
 		return "article.articleinsert";
 	}	
 	
@@ -112,10 +116,10 @@ public class ArticleController {
 			model.addAttribute("recordCount", recordCount);
 			model.addAttribute("pageSize", pageSize);
 						
-			return "article.list";
+			return "article.articlelist";
 		} catch (Exception e) {
-			model.addAttribute("msg", "list 출력 에러");
-			model.addAttribute("url", "index");
+			model.addAttribute("msg", "board list 출력 에러");
+			model.addAttribute("url", "javascript:history.back();");
 			return "result";
 		}
 	}

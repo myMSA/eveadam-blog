@@ -5,8 +5,6 @@
 
 <c:set var="app" value="${pageContext.request.contextPath}" />
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -130,7 +128,7 @@
 		$(document)
 				.ready(
 						function() {
-							<c:if test="${ user == null }" >
+							<c:if test="${ member == null }" >
 							Kakao.init('ce06f334c5c93f33aa14468cf63ac24f');
 							Kakao.Auth
 									.createLoginButton({
@@ -157,7 +155,7 @@
 																		url : "${app}/kakaoLogin",
 																		method : "POST",
 																		data : {
-																			id : id,
+																			kakao_id : id,
 																			email : email,
 																			nickname : nickname
 																		},

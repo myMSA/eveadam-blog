@@ -3,6 +3,7 @@ package com.eveadam.blog.controller.board;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,11 +25,8 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping(value = { "board/" })
 public class BoardController {
 
+	@Autowired
 	private BoardService boardService;
-
-	public BoardController(BoardService boardService) {
-		this.boardService = boardService;
-	}
 
 	// 게시판들 보여주기
 	@GetMapping("boardlist")
@@ -67,7 +65,7 @@ public class BoardController {
 	@PostMapping("boardinsert")
 	public String boardinsert(@ModelAttribute BoardDTO boardDTO, Model model) {
 
-		log.info("#############" + boardDTO);
+		log.info("boardinsert " + boardDTO);
 		try {
 			boardService.insertBoard(boardDTO);
 			return "redirect:./boardlist";

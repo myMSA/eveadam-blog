@@ -23,8 +23,24 @@
 	padding-top: 40px;
 	color: #010101;
 }
+
+.buttonfooter{
+	background-color: white;
+	border: none;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 15px;
+	cursor: pointer;
+	color: black;
+}
+
 </style>
 
 <div class="footer">
-	<div class="footerWrapper"><button class="buttonHeader" onclick="location.href='https://github.com/devsacti/JAVA-APP';">Github : Adam(devsacti)</button></div>
+	<div class="footerWrapper">
+	<button class="buttonfooter" onclick="location.href='https://eveadam.atlassian.net/wiki/spaces/AGILE/overview';">Confluence : EveAdam</button>
+	|
+	<button class="buttonfooter" onclick="location.href='https://github.com/devsacti/JAVA-APP';">Github : Adam(devsacti)</button>
+	</div>
 </div>

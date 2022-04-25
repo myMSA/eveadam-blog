@@ -88,7 +88,7 @@ a:visited {
 
 	<div class="homebodyWrapper">
 		<h1>REVIEW</h1>
-		<c:if test="${user != null}">
+		<c:if test="${member != null}">
 		<a href="./boardinsert">Insert Board</a> |
 		<a href="./boarddelete">Delete Board</a>
 		</c:if>
