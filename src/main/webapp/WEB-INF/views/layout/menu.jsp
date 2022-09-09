@@ -37,7 +37,7 @@
 
 <body>
 	<div class="menu">
-		<h2>Subjects</h2>
+		<h2>Mysides</h2>
 
 		<c:forEach items="${boardlist}" var="dto">
 			<!-- button method -->

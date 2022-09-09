@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.eveadam.blog.dto.BoardDTO;
+import com.eveadam.blog.dto.board.BoardDTO;
 
 public interface BoardMapper {
 

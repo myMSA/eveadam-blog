@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.eveadam.blog.dto.ArticleDTO;
-import com.eveadam.blog.dto.BoardDTO;
+import com.eveadam.blog.dto.article.ArticleDTO;
+import com.eveadam.blog.dto.board.BoardDTO;
 import com.eveadam.blog.service.article.ArticleService;
 import com.eveadam.blog.service.board.BoardService;
 

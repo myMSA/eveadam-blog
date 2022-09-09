@@ -2,7 +2,7 @@ package com.eveadam.blog.service.reply;
 
 import java.util.List;
 
-import com.eveadam.blog.dto.ReplyDTO;
+import com.eveadam.blog.dto.reply.ReplyDTO;
 
 public interface ReplyService {
 	

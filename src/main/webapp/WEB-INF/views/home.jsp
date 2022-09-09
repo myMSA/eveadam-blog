@@ -34,7 +34,7 @@
 
 .homebodyWrapper {
 	margin: 300px auto;
-	max-width: 400px;
+	max-width: 500px;
 	height: 150px;
 	border-radius: 5px;
 	text-align: center;
@@ -69,6 +69,38 @@
 
 <body>
 
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript">
+var IMP = window.IMP;
+IMP.init('impxxxx');
+
+IMP.request_pay({
+	pg	: 'kakaopay',
+	pay_method : 'card',
+	merchant_uid : 'merchant_' + new Date().getTime(),
+	name : 'Bunddeuk',
+	amount : amount,
+	
+	customer_uid : buyer_name + new Date().getTime(),
+	buyer_email : email,
+	buyer_name : buyer_name,
+	buyer_tel : hp,
+	buyer_addr : addr,},
+	function(rsp){
+		if(rsp.success){
+			console.log('빌링키 발급 성공', rsp)
+			alert('예약 결제가 완료되었습니다!');
+		} else{
+			
+		}
+	}
+})
+
+
+</script>
+
+
+
 	<div class="homebodyWrapper">
 
 		<div>
@@ -78,14 +110,12 @@
 		<br>
 		<div class="slide-child">Review of Today and before is Review of
 			Tomorrow.</div>
-		<div class="slide-child">So...</div>
-		<div class="slide-child">WHAT?</div>
+		<div class="slide-child">But</div>
+		<div class="slide-child">If Tomorrow Vision with Heart Exists, It makes Today Mission</div>
 		<br>
 		<div class="slide-child">
 			<button class="buttonHome"
 				onclick="location.href='${app}/board/boardlist';">REVIEW</button>
-			|
-			<button class="buttonHome" onclick="location.href='${app}/what';">WHAT?</button>
 		</div>
 	</div>
 

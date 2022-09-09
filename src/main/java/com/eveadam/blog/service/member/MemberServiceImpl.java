@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.log4j.Log4j;
 
-import com.eveadam.blog.dto.MemberDTO;
+import com.eveadam.blog.dto.member.MemberDTO;
 import com.eveadam.blog.mapper.member.MemberMapper;
 
 @Log4j

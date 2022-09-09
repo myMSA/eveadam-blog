@@ -138,7 +138,7 @@
 													.request({
 														url : '/v2/user/me',
 														success : function(res) {
-															//alert(JSON.stringify(res));
+															alert(JSON.stringify(res));
 															var id = res.id;
 															var email = (res.kakao_account.email ? res.kakao_account.email
 																	: '');

@@ -33,4 +33,9 @@ public class HomeController {
 		return "what";
 	}
 	
+	@RequestMapping(value = "/p/index.do", method = RequestMethod.GET)
+	public String main() {
+		
+		return "index_std";
+	}
 }

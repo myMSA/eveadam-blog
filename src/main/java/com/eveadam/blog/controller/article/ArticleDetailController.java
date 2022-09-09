@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.eveadam.blog.dto.ArticleDTO;
-import com.eveadam.blog.dto.ReplyDTO;
+import com.eveadam.blog.dto.article.ArticleDTO;
+import com.eveadam.blog.dto.reply.ReplyDTO;
 import com.eveadam.blog.service.article.ArticleService;
 import com.eveadam.blog.service.reply.ReplyService;
 

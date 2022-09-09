@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.eveadam.blog.dto.ReplyDTO;
+import com.eveadam.blog.dto.reply.ReplyDTO;
 
 public interface ReplyMapper {
 

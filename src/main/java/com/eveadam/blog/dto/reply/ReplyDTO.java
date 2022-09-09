@@ -1,4 +1,4 @@
-package com.eveadam.blog.dto;
+package com.eveadam.blog.dto.reply;
 
 import java.util.Date;
 

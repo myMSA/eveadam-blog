@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.eveadam.blog.dto.MemberDTO;
+import com.eveadam.blog.dto.member.MemberDTO;
 import com.eveadam.blog.service.member.MemberService;
 
 import lombok.extern.log4j.Log4j;

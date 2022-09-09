@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.eveadam.blog.dto.ArticleDTO;
-import com.eveadam.blog.dto.ReplyDTO;
+import com.eveadam.blog.dto.article.ArticleDTO;
+import com.eveadam.blog.dto.reply.ReplyDTO;
 import com.eveadam.blog.mapper.reply.ReplyMapper;
 
 import lombok.extern.log4j.Log4j;

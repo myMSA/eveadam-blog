@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.eveadam.blog.dto.ReplyDTO;
+import com.eveadam.blog.dto.reply.ReplyDTO;
 import com.eveadam.blog.service.reply.ReplyService;
 
 import lombok.extern.log4j.Log4j;

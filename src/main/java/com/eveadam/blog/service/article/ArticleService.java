@@ -2,8 +2,8 @@ package com.eveadam.blog.service.article;
 
 import java.util.List;
 
-import com.eveadam.blog.dto.ArticleDTO;
-import com.eveadam.blog.dto.BoardDTO;
+import com.eveadam.blog.dto.article.ArticleDTO;
+import com.eveadam.blog.dto.board.BoardDTO;
 
 public interface ArticleService {
 	// Read Artilce list with Paging method

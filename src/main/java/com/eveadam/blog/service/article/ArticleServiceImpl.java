@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.log4j.Log4j;
-import com.eveadam.blog.dto.ArticleDTO;
-import com.eveadam.blog.dto.BoardDTO;
-import com.eveadam.blog.dto.ReplyDTO;
+
+import com.eveadam.blog.dto.article.ArticleDTO;
+import com.eveadam.blog.dto.board.BoardDTO;
+import com.eveadam.blog.dto.reply.ReplyDTO;
 import com.eveadam.blog.mapper.article.ArticleMapper;
 import com.eveadam.blog.mapper.reply.ReplyMapper;
 

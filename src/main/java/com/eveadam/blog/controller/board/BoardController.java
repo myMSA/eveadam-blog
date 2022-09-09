@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.eveadam.blog.dto.BoardDTO;
+import com.eveadam.blog.dto.board.BoardDTO;
 import com.eveadam.blog.service.board.BoardService;
 
 import lombok.extern.log4j.Log4j;

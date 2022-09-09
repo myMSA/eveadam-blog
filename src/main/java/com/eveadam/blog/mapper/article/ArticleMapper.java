@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.eveadam.blog.dto.ArticleDTO;
+import com.eveadam.blog.dto.article.ArticleDTO;
 
 public interface ArticleMapper {
 	// article list
